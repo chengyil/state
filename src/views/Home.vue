@@ -6,12 +6,12 @@
           <h1 class="text-center">Upload Files</h1>
         </v-col>
       </v-row>
-      <v-row
-        align="stretch"
-        class="file-action"
-        @drop.prevent="addFile"
-        @dragover.prevent
-      >
+      <v-row class="file-action">
+        <v-col cols="6">
+          <div class="drop" @drop.prevent="addFile" @dragover.prevent>
+            <p class="message text-center">Upload your file here</p>
+          </div>
+        </v-col>
         <v-col cols="6">
           <v-simple-table>
             <template>
@@ -32,11 +32,6 @@
             </template>
           </v-simple-table>
         </v-col>
-        <v-col cols="6">
-          <div class="drop">
-            <p class="message text-center">Upload your file here</p>
-          </div>
-        </v-col>
       </v-row>
     </v-container>
   </v-sheet>
@@ -51,7 +46,6 @@ export default {
       if (!droppedFiles) {
         return;
       }
-
       droppedFiles.forEach(file => {
         this.files.push(file);
       });
@@ -68,11 +62,9 @@ export default {
 <style lang="scss" scoped>
 .drop {
   border: 3px dashed black;
-  height: 100%;
+  height: 200px;
   width: 100%;
   position: relative;
-}
-.message {
 }
 .file-action {
   min-height: 80px;
